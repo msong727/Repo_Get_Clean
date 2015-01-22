@@ -38,4 +38,3 @@ The detail flow of R script can be found in the R script.
 
 
 The variable description can be found in the Codebook.md in this repo.
-

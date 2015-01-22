@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>data= train + test w/ SubjectID, activity (labels)</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h3>data= train + test w/ SubjectID, activity (labels)</h3>
+
+<ol>
+<li><p>Read data
+1.1 features.txt
+1.2 3 train data sets (X_train.txt, y_train.txt, subject_train.txt)
+1.3 3 test data sets  (X_test.txt,  y_test.txt,  subject_test.txt)
+1.4 activity_labels.txt</p></li>
+<li><p>Merges the training and the test sets to create one data set &ldquo;data&rdquo;, and sort by SubjectID and activity</p></li>
+<li><p>Extracts only the measurements on the mean and standard deviation for each measurement</p></li>
+<li><p>Uses descriptive activity names to name the activities in the data set</p></li>
+<li><p>Create tidy data set (data.tidy) with column mean by SubjectID and activity</p></li>
+</ol>
+
+<h3>data set &ldquo;data&rdquo;&ldquo; has 10299 rows and 81 columns</h3>
+
+<p>column has same as data_tidy</p>
+
+<h2>data_tidy has 180 rows and 81 comumns</h2>
+
+<hr/>
+
+<h2>Columns</h2>
+
+<pre><code>  1. SubjectID                   
+        Subject ID      : 1-30
+  2. activity                     
+        Activity labels : 1-5
+  3. tBodyAcc.std...X_mean
+  4. tBodyAcc.std...Y_mean
+  5. tBodyAcc.std...Z_mean
+  6. tGravityAcc.std...X_mean
+  7. tGravityAcc.std...Y_mean
+  8. tGravityAcc.std...Z_mean
+  9. tBodyAccJerk.std...X_mean
+ 10. tBodyAccJerk.std...Y_mean
+ 11. tBodyAccJerk.std...Z_mean
+ 12. tBodyGyro.std...X_mean
+ 13. tBodyGyro.std...Y_mean
+ 14. tBodyGyro.std...Z_mean
+ 15. tBodyGyroJerk.std...X_mean
+ 16. tBodyGyroJerk.std...Y_mean
+ 17. tBodyGyroJerk.std...Z_mean
+ 18. tBodyAccMag.std.._mean
+ 19. tGravityAccMag.std.._mean
+ 20. tBodyAccJerkMag.std.._mean
+ 21. tBodyGyroMag.std.._mean
+ 22. tBodyGyroJerkMag.std.._mean
+ 23. fBodyAcc.std...X_mean
+ 24. fBodyAcc.std...Y_mean
+ 25  fBodyAcc.std...Z_mean
+ 26. fBodyAccJerk.std...X_mean
+ 27  fBodyAccJerk.std...Y_mean
+ 28. fBodyAccJerk.std...Z_mean
+ 29. fBodyGyro.std...X_mean
+ 30. fBodyGyro.std...Y_mean
+ 31. fBodyGyro.std...Z_mean
+ 32. fBodyAccMag.std.._mean
+ 33. fBodyBodyAccJerkMag.std.._mean
+ 34. fBodyBodyGyroMag.std.._mean
+ 35. fBodyBodyGyroJerkMag.std.._mean
+ 36. tBodyAcc.mean...X_mean
+ 37. tBodyAcc.mean...Y_mean
+ 38. tBodyAcc.mean...Z_mean
+ 39. tGravityAcc.mean...X_mean
+ 40. tGravityAcc.mean...Y_mean
+ 41. tGravityAcc.mean...Z_mean
+ 42. tBodyAccJerk.mean...X_mean
+ 43. tBodyAccJerk.mean...Y_mean
+ 44. tBodyAccJerk.mean...Z_mean
+ 45. tBodyGyro.mean...X_mean
+ 46. tBodyGyro.mean...Y_mean
+ 47. tBodyGyro.mean...Z_mean
+ 48. tBodyGyroJerk.mean...X_mean
+ 49. tBodyGyroJerk.mean...Y_mean
+ 50. tBodyGyroJerk.mean...Z_mean
+ 51. tBodyAccMag.mean.._mean
+ 52. tGravityAccMag.mean.._mean
+ 53. tBodyAccJerkMag.mean.._mean
+ 54. tBodyGyroMag.mean.._mean
+ 55. tBodyGyroJerkMag.mean.._mean
+ 56. fBodyAcc.mean...X_mean
+ 57. fBodyAcc.mean...Y_mean
+ 58. fBodyAcc.mean...Z_mean
+ 59. fBodyAcc.meanFreq...X_mean
+ 60. fBodyAcc.meanFreq...Y_mean
+ 61. fBodyAcc.meanFreq...Z_mean
+ 62. fBodyAccJerk.mean...X_mean
+ 63. fBodyAccJerk.mean...Y_mean
+ 64. fBodyAccJerk.mean...Z_mean
+ 65. fBodyAccJerk.meanFreq...X_mean
+ 66. fBodyAccJerk.meanFreq...Y_mean
+ 67. fBodyAccJerk.meanFreq...Z_mean
+ 68. fBodyGyro.mean...X_mean
+ 69. fBodyGyro.mean...Y_mean
+ 70. fBodyGyro.mean...Z_mean
+ 71. fBodyGyro.meanFreq...X_mean
+ 72. fBodyGyro.meanFreq...Y_mean
+ 73. fBodyGyro.meanFreq...Z_mean
+ 74. fBodyAccMag.mean.._mean
+ 75. fBodyAccMag.meanFreq.._mean
+ 76. fBodyBodyAccJerkMag.mean.._mean
+ 77. fBodyBodyAccJerkMag.meanFreq.._mean
+ 78. fBodyBodyGyroMag.mean.._mean
+ 79. fBodyBodyGyroMag.meanFreq.._mean
+ 80. fBodyBodyGyroJerkMag.mean.._mean
+ 81. fBodyBodyGyroJerkMag.meanFreq.._mean
+</code></pre>
+
+</body>
+
+</html>
