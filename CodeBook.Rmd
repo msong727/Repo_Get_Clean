@@ -33,7 +33,7 @@ output: html_document
   1. SubjectID                   
         Subject ID      : 1-30
   2. activity                     
-        Activity labels : 1-5
+        Activity labels 
   3. tBodyAcc.std...X_mean
   4. tBodyAcc.std...Y_mean
   5. tBodyAcc.std...Z_mean
